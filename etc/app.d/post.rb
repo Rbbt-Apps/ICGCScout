@@ -1,3 +1,5 @@
+require 'rbbt/entity/study'
+
 Study.instance_variable_set("@study_dir", Rbbt.studies.find(:lib))
 
 require 'kramdown'
