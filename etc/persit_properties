@@ -1,0 +1,18 @@
+Sample:
+  - affected_genes, annotations, repo
+  - damaged_genes, annotations, repo
+  - gained_genes, annotations, repo
+  - lost_genes, annotations, repo
+  - relevant_mutations, annotations, repo
+  - damaging_mutations, annotations, repo
+Study:
+  - affected_genes, annotations, repo
+  - damaged_genes, annotations, repo
+  - recurrent_genes, annotations, repo
+  - all_mutations, annotations, repo
+  - relevant_mutations, annotations, repo
+  - damaging_mutations, annotations, repo
+  - gene_sample_matrix, tsv
+  - samples_with_gene_affected, marshal
+
+
