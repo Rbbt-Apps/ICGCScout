@@ -1,0 +1,46 @@
+- studies = Rbbt.studies.find(:lib).glob("*").sort.collect{|file| File.basename file}
+
+%h5
+  %a(href='/main/study_gene') Study gene network
+%h5
+  %a(href='/main/study_pathway') Study pathway network
+%h5
+  %a(href='/main/study_gene_interactor') Study gene interactor network
+
+.row
+  .column.small-12
+    %ul.clean_list
+      - dataset_info = ICGC.job(:datasets, nil).run.select(:key => studies)
+      - dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
+      - dataset_info.add_field "Number of mutations" do |study, values|
+        - study = Study.setup(study)
+        - if study.has_genotypes? 
+          - study.cohort.metagenotype.length
+        - else
+          - "None"
+        
+      = tsv2html(dataset_info)
+
+-#- studies = studies.select{|s| s !~ /lung/i}
+-#- databases = %w(go_bp go_cc go_mf kegg nature reactome pfam interpro biocarta)
+-#- databases = %w(nature)
+-#.row
+  .column.small-12
+    %dl.tabs
+      %dt Study Genes
+      %dd.selected
+        = partial_render('main/study_gene', :databases => databases, :studies => studies, :threshold => 0.001, :limit => 10)
+
+      -#%dt Study Gene Interactor
+      -#%dd.selected
+      -#  = partial_render('main/study_gene_interactor', :databases => databases, :studies => studies, :limit => 20)
+
+
+      -#%dt Study-Gene
+      -#%dd
+
+      -#%dt Study-Pathway
+      -#%dd.selected
+        = partial_render('main/study_pathway', :databases => databases, :studies => studies)
+
+

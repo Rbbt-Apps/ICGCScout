@@ -1,0 +1,45 @@
+ICGCScout=/$PWD filter="*.rb *.haml *.js *.sass *.css *.R *.ru" {
+ unicorn.conf.rb
+ workflow.rb
+ config.ru
+ etc=etc filter="*"{
+  entities
+  persit_properties
+  requires
+  workflows
+  config.d=config.d{
+   base.rb
+   entities.rb
+   init.rb
+   post.rb
+   resources.rb
+  }
+ }
+ bin=bin {
+ }
+ lib=lib {
+  icgc.rb
+ }
+ www=www{
+  views=views{
+   main.haml
+   main=main{
+    study_gene.haml
+    study_pathway.haml
+    study_gene_interactor.haml
+   }
+   entity=entity{
+    Study=Study{
+     gene_list_in_study.haml
+     analysis.haml
+    }
+   }
+   entity_list=entity_list{
+    Gene=Gene{
+    }
+    Sample=Sample{
+    }
+   }
+  }
+ }
+}
