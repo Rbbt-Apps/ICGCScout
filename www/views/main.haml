@@ -10,9 +10,10 @@
 .row
   .column.small-12
     %ul.clean_list
-      - dataset_info = ICGC.job(:datasets, nil).run.select(:key => studies)
+      - dataset_info = ICGC.job(:datasets, nil).run #.select(:key => studies)
       - dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
       - dataset_info.add_field "Number of mutations" do |study, values|
+        - ddd study
         - study = Study.setup(study)
         - if study.has_genotypes? 
           - study.cohort.metagenotype.length
