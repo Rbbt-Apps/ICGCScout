@@ -1,9 +1,14 @@
 require 'rbbt/entity/study'
 
-#Study.instance_variable_set("@study_dir", Rbbt.studies.find(:lib))
-Study.study_dir = ICGC.root
-
 require 'kramdown'
 def user_studies
   @user_studies = Hash.new{ Study.studies }
 end
+
+Workflow.require_workflow "ICGC"
+
+require 'rbbt'
+
+path = Path.setup('', nil, nil, :global => ICGC.root.find["{PATH}"]) 
+
+Study.study_dir = path

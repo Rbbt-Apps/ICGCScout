@@ -7,7 +7,7 @@ ICGCScout=/$PWD filter="*.rb *.haml *.js *.sass *.css *.R *.ru" {
   persit_properties
   requires
   workflows
-  config.d=config.d{
+  app.d=app.d{
    base.rb
    entities.rb
    init.rb
