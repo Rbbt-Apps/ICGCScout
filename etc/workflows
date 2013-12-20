@@ -1,11 +1,9 @@
 Genomics
+COSMIC
 Sequence
 MutationEnrichment
 Enrichment
 MutEval
-NKIWorkflow
-MutationSignatures
-Oncodrive
 Structure
 Appris
 GDSC
@@ -13,3 +11,4 @@ Translation
 Graph
 ICGC
 TSVWorkflow
+D3Js

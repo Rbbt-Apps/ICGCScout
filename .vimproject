@@ -30,14 +30,6 @@ ICGCScout=/$PWD filter="*.rb *.haml *.js *.sass *.css *.R *.ru" {
    }
    entity=entity{
     Study=Study{
-     gene_list_in_study.haml
-     analysis.haml
-    }
-   }
-   entity_list=entity_list{
-    Gene=Gene{
-    }
-    Sample=Sample{
     }
    }
   }
