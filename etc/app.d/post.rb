@@ -12,3 +12,13 @@ require 'rbbt'
 path = Path.setup('', nil, nil, :global => ICGC.root.find["{PATH}"]) 
 
 Study.study_dir = path
+
+module Sinatra
+  module RbbtAuth
+    module Helpers
+      def user
+        session[:user] || 'guest'
+      end
+    end
+  end
+end
