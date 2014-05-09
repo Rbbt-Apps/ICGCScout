@@ -3,8 +3,6 @@ Genomes1000
 COSMIC
 DbSNP
 Sequence
-MutationEnrichment
-Enrichment
 MutEval
 Structure
 Appris
@@ -14,3 +12,5 @@ ICGC
 TSVWorkflow
 D3Js
 GEO
+MutationEnrichment
+Enrichment
