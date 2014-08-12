@@ -2,16 +2,17 @@ require 'rbbt/entity/study'
 
 require 'kramdown'
 def user_studies
-  @user_studies = Hash.new{ Study.studies }
+  @user_studies = Hash.new{ Sample.all_studies }
 end
 
 Workflow.require_workflow "ICGC"
 
 require 'rbbt'
 
-path = Path.setup('', nil, nil, :global => ICGC.root.find["{PATH}"]) 
+#path = Path.setup('', nil, nil, :local => Sample.study_repo.find["{PATH}"], :global => ICGC.root.find["{PATH}"]) 
+path = Path.setup('', nil, nil, :_local => Sample.study_repo.find["{PATH}"], :global => ICGC.root.find["{PATH}"]) 
 
-Study.study_dir = path
+Sample.study_repo = path
 
 module Sinatra
   module RbbtAuth

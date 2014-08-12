@@ -4,7 +4,6 @@ MutatedIsoform
 GenomicMutation
 SNP
 ChromosomeRange
-CNV
 Gene
 Protein
 PMID

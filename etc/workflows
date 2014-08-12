@@ -1,7 +1,10 @@
+Sample
 Genomics
 Genomes1000
 COSMIC
 DbSNP
+GEO
+InterPro
 Sequence
 MutEval
 Structure
@@ -11,6 +14,7 @@ Graph
 ICGC
 TSVWorkflow
 D3Js
-GEO
 MutationEnrichment
 Enrichment
+Sample
+Study
