@@ -5,6 +5,7 @@ rbbt/entity/mutated_isoform
 rbbt/entity/chromosome_range
 rbbt/entity/drug
 rbbt/entity/InterPro
+rbbt/entity/appris
 rbbt/entity/study
 rbbt/entity/study/genotypes
 rbbt/entity/study/cnv
