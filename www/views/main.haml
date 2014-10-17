@@ -6,7 +6,7 @@
       - dataset_info = ICGC.job(:datasets, nil).run #.select(:key => studies)
       - dataset_info.delete_if{|k,v| k =~ /README/}
       - dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
-      - RbbtSemaphore.fork_each_on_semaphore dataset_info.keys, 10 do |study|
+      - RbbtSemaphore.fork_each_on_semaphore dataset_info.keys.sort, 10 do |study|
         - Study.setup(study)
         - study.metagenotype if study.has_genotypes? 
       - dataset_info.add_field "Number of samples/mutations" do |study, values|

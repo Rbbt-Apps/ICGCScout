@@ -1,2 +1,6 @@
 Study:
   - organism, string
+  - has_genotypes?, marshal
+  - binomial_significance, marshal
+Sample:
+  - has_genotype?, marshal
