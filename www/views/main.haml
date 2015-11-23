@@ -1,23 +1,18 @@
-- studies = Rbbt.studies.find(:lib).glob("*").sort.collect{|file| File.basename file}
+%ul.clean_list
+  - dataset_info = ICGC.job(:datasets, nil).run 
+  - dataset_info.delete_if{|k,v| k =~ /README/}
+  - dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
 
-.row
-  .column.small-12
-    %ul.clean_list
-      - dataset_info = ICGC.job(:datasets, nil).run #.select(:key => studies)
-      - dataset_info.delete_if{|k,v| k =~ /README/}
-      - dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
-      - RbbtSemaphore.fork_each_on_semaphore dataset_info.keys.sort, 10 do |study|
-        - Study.setup(study)
-        - study.metagenotype if study.has_genotypes? 
-      - dataset_info.add_field "Number of samples/mutations" do |study, values|
-        - log study
-        - study = Study.setup(study)
-        - if study.has_genotypes? 
-          - samples = study.samples.select_by(:has_genotype?).length
-          - mutations = study.metagenotype.length
-          - "#{samples} / #{mutations}"
-        - else
-          - "None"
-        
-      = tsv2html(dataset_info)
+  - dataset_info.add_field "Number of samples/mutations" do |study, values|
+    - log study
+    - study = Study.setup(study)
+    - if study.has_genotypes? 
+      - samples = study.genotyped_samples.length
+      - mutations = study.metagenotype.length
+      - "#{samples} / #{mutations}"
+    - else
+      - "None"
+    
+  = table do
+    - dataset_info
 
