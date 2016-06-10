@@ -1,7 +1,7 @@
 %ul.clean_list
-  - dataset_info = ICGC.job(:datasets, nil).run 
+  - dataset_info = ICGC.job(:dataset_overview, nil).run 
   - dataset_info.delete_if{|k,v| k =~ /README/}
-  - dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
+  -# dataset_info.fields = ["With clinical", "Genotyped", "With CNV", "With gene expression", "With methylation"]
 
   - dataset_info.add_field "Number of samples/mutations" do |study, values|
     - log study
@@ -13,6 +13,7 @@
     - else
       - "None"
     
+  - good_fields = dataset_info.fields - %w(Specimen Sample Donor)
   = table do
-    - dataset_info
+    - dataset_info.slice(good_fields)
 
