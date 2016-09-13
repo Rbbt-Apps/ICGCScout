@@ -6,12 +6,15 @@
   - dataset_info.add_field "Number of samples/mutations" do |study, values|
     - log study
     - study = Study.setup(study)
-    - if study.has_genotypes? 
-      - samples = study.genotyped_samples.length
-      - mutations = study.metagenotype.length
-      - "#{samples} / #{mutations}"
-    - else
-      - "None"
+    - begin
+      - if study.has_genotypes? 
+        - samples = study.genotyped_samples.length
+        - mutations = study.metagenotype.length
+        - "#{samples} / #{mutations}"
+      - else
+        - "None"
+    - rescue
+      - next
     
   - good_fields = dataset_info.fields - %w(Specimen Sample Donor)
   = table do
