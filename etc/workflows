@@ -6,7 +6,6 @@ DbSNP
 InterPro
 Appris
 TSVWorkflow
-D3Js
 Translation
 Sequence
 Graph
@@ -16,14 +15,10 @@ Sample
 Study
 DbNSFP
 TextMining
-KBTraverser
 Genomics
-TCPA
 GEO
 MutSig
 Pandrugs
 KinMut2
 Annovar
 VEP
-BioJS
-MutSig
